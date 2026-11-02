@@ -1,0 +1,14 @@
+import { Router } from "express";
+import { listPosts, getPost, getPostForEdit, createPost, updatePost, deletePost, popularTags } from "../controllers/posts.controller.js";
+import { createComment } from "../controllers/comments.controller.js";
+import { requireAuth } from "../middleware/auth.js";
+const router = Router();
+router.get("/", listPosts);
+router.get("/tags", popularTags);
+router.get("/by-id/:id", requireAuth, getPostForEdit);
+router.get("/:slug", getPost);
+router.post("/", requireAuth, createPost);
+router.patch("/:id", requireAuth, updatePost);
+router.delete("/:id", requireAuth, deletePost);
+router.post("/:postId/comments", requireAuth, createComment);
+export default router;

@@ -1,0 +1,14 @@
+{
+  "name": "istomin-blog",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A full-stack publishing platform built with React, Express and MongoDB.",
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "build": "npm run build --workspace client",
+    "test": "npm test --workspace server"
+  },
+  "devDependencies": {"concurrently": "^9.1.2"},
+  "engines": {"node": ">=20"}
+}
